@@ -1,0 +1,21 @@
+COME ESEGUIRE IL PROGETTO
+Per eseguire il progetto schiacciare sulla classe Main e poi fare Run.
+Come codice il main esegue la creazione di 3 gruppi, chiedendo il nome all'utente.
+il sistema salva i gruppi se il nome dei gruppi non è in uso,se no lo richiede
+Si sceglie se scaricare i dati di un app o un gruppo(visto che lo scaricamento richiama anche la visualizzazione)
+e  se si inserisce qualcosa di diverso da "app" o "gruppo" il sistema stampa un messaggio di errore e bisogna rilanciarlo
+Se viene scelta un app, viene visualizzata una lista di app e si sceglie di quale scaricare  i dati
+Se si sceglie un gruppo viene visualizzata la lista di gruppi e si sceglie di quale scaricare i dati
+Poi in entrambi i casi viene chiesto il percorso e il nome del file, se si inserisce un percorso
+non esistente viene visualizzato un messaggio di errore e bisogna far ripartire il main
+		
+
+
+
+COME ESEGUIRE I TEST
+Per eseguire i test, bisogna andare sulle rispettive SuitCase (strutturale o funzionale) e schiacciare run.
+Nell'esecuzione dei test strutturali due test potrebbero fallire (AppTestScaricamento e GruppoTestScaricamento) poichè viene specificato un percorso 
+per scaricare il file che potrebbe non esistere sul pc di chi usa il progetto.
+Quindi l'assert true del test case fallisce.
+Stessa cosa può capitare nei test funzionali nei casi AppTestScaricamentoDatiFunzionale e GruppoTestScaricamentoDatiFunzionale.
+Nel commento prima del test viene ricordato questo possibile scenario come commento.
