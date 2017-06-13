@@ -21,7 +21,7 @@ public class AppTestScaricamento
 	{
 		ElementAppStore store=new GoogleStore();
 		App app1=new App("appTest",store);
-		String percorso="/home/se-17-user/file1";
+		String percorso="/home/se-17-user/file11";
 		String s="file creato";
 		assertTrue(app1.salvataggioFile(percorso, s));
 	}

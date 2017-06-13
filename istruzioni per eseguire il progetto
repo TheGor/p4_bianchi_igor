@@ -17,4 +17,5 @@ Per eseguire i test, bisogna andare sulle rispettive SuitCase (strutturale o fun
 Nell'esecuzione dei test strutturali due test potrebbero fallire (AppTestScaricamento e GruppoTestScaricamento) poichè viene specificato un percorso 
 per scaricare il file che potrebbe non esistere sul pc di chi usa il progetto.
 Quindi l'assert true del test case fallisce.
-Stessa cosa può capitare nei test funzionali
+Stessa cosa può capitare nei test funzionali nei casi AppTestScaricamentoDatiFunzionale e GruppoTestScaricamentoDatiFunzionale.
+Nel commento prima del test viene ricordato questo possibile scenario come commento.

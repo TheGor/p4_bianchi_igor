@@ -18,7 +18,7 @@ public class GruppoTestScaricamento
 	public void testSalvataggioDatiCorretto()
 	{
 		Gruppo g=new Gruppo("gruppoProva");
-		String percorso="/home/se-17-user/file1";
+		String percorso="/home/se-17-user/file10";
 		String s="file creato";
 		assertTrue(g.salvataggioFile(percorso, s));
 	}
@@ -29,7 +29,7 @@ public class GruppoTestScaricamento
 	public void testSalvataggioDatiFail()
 	{
 		Gruppo g=new Gruppo("gruppoProva1");
-		String percorso="/sjsjsjdsjdshdsjdh";
+		String percorso="/sjghghgh";
 		String s="file creato";
 		assertFalse(g.salvataggioFile(percorso, s));	
 	}
