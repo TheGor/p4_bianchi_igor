@@ -1,7 +1,0 @@
-Le differenze rispetto ai documenti proposti sono:
-
--La classe dei Dati descritta nel class diagram non è quella utilizzata nel codice poichè il report con i dati è stato fornito successivamente dall'azienda.
--Il metodo ScaricamentoDati(), a differenza del class diagram dove è scritto che restituisce un file, nel codice è un void.
--Nel codice è presente una classe input che contiene tutti i metodi per l'inserimento e la lettura da input, ai fini del progetto è inutile.
-- I metodi richiamati dalla visualizzazione(estrazione,normalizzazione,aggregazione) non sono sviluppati poichè use case di competenza di altri colleghi
-e poichè il loro lavoro è sostituito da dei settagi nel main (lo use case di estrazione non è stato sviluppato come indicato dal docente stesso).
