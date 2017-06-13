@@ -39,31 +39,54 @@ public class Gruppo
 	public void setApps(ArrayList<App> apps) {
 		this.apps = apps;
 	}
+
 	/**
-     * Funzione per la visualizzazione dei dati di un Gruppo
-     *
-     */
-    public String preparazioneDatiStringa()
+	 * Funzione che prepara la stampa
+     * ovvero racchiude sotto forma di stringa tutti
+     * i dati da stampare
+     * (usata per evitare la ripetizione di codice per lo
+     * scaricamento)
+     * ritorna una stringa
+	 * @return
+	 */
+	
+	
+	public String preparazioneDatiStringa()
     {
     	//this.estrazioneDati() 
-    	//questo metodo estrae i dati, viene riposrtato in commento poichè
+    	//questo metodo estrae i dati delle app del gruppo, viene riposrtato in commento poichè
     	//i dati sono creati e settati nel main non essendo il mio use case
     	//di competenza
     	
     	//forall app in gruppo
     	//app.normalizzazioneDati()
-    	//questo metodo normalizza i dati creando la classe dati descritta
+    	//questo metodo normalizza i dati per ogni app creando la classe dati descritta
     	//nel class diagram e associa i dati a ciascuna app del gruppo
     	
     	//this.aggregazioneDati()
     	//crea un oggetto di tipo dati che contiene i dati aggregati delle app
     	//presenti nel gruppo
     	
-    	//queste tre funzionalità sono messe in commento poichè il loro lavoro
+    	//queste funzionalità sono messe in commento poichè il loro lavoro
     	//viene svolto nel main dove vengono creati le classi dati e vengono
-    	//settati i loro valori per poter poi effettuare la normalizzazione
+    	//settati i loro valori per poter poi essere assegnati.
     	//Questo è stato fatto poichè queste funzioni sono altri use case 
     	//implementati dai miei colleghi
+		
+		//come dato aggregato viene preso l'elemento 0 di ogni array
+		//che in realtà sono due: un arraylist per i dati interi
+		//e un arraylist double per i double
+		//Viene preso l'elemento 0 poichè l'aggregazione (come concordato con il collega
+		//dell'aggregazione) mette il dato aggregato nella posizione 0
+		//Siccome io utilizzo lo stesso array il dato stampato sarà sempre uguale,
+		//la mia priorità era organizzare la stampa
+		
+		//questo metodo è un metodo ausiliario per evitare la ripetizione di  codice
+		//nello scaricamento e per preparare la stampa
+		//mettendo tutti i dati in un unica stringa
+		//Il codice è composto da tanti cicli for che prendono
+		//e incolonnano i dati, controllando se il dato esiste
+		//se c'è viene stampato,se no ciene stampato ND
     	
     	boolean visualizzazione=true;
     	String stampaGruppo="";
@@ -150,57 +173,52 @@ public class Gruppo
 		    	sep1+"Overview_dailyUserUninstalls"
 		    	+sep1+"Overview_activeDeviceInstalls";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getOverview_data()==null || this.getApps().get(1).getDati().getOverview_data()==null)
+		    
+		    		
+	    		if(this.getDatiAggregati().getOverview_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+	    			stampaGruppo=stampaGruppo+spazio+spazio;
+	    			stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-		    		
-		    		if(this.getDatiAggregati().getOverview_dailyUserInstalls()==null)
-			    	{
-		    			stampaGruppo=stampaGruppo+spazio+spazio;
-		    			stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getOverview_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getOverview_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getOverview_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getOverview_dailyUserUninstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getOverview_dailyUserUninstalls()
-			    				
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getOverview_activeDeviceInstalls()==null)
-			    	{
-			    	
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getOverview_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getOverview_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOverview_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getOverview_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOverview_dailyUserUninstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getOverview_dailyUserUninstalls()
+		    				
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOverview_activeDeviceInstalls()==null)
+		    	{
+		    	
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getOverview_activeDeviceInstalls()
+		    				.get(0);
+		    	}
+		    
 		    	
 		    	
 		    	
@@ -215,55 +233,50 @@ public class Gruppo
 		    	+sep1+"Carrier_dailyUserUninstalls"+sep1
 		    	+"Carrier_activeDeviceInstalls";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getCarrier_data()==null || this.getApps().get(1).getDati().getCarrier_data()==null)
+		    	
+		    	
+		    	if(this.getDatiAggregati().getCarrier_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getCarrier_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCarrier_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCarrier_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCarrier_dailyUserUninstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCarrier_dailyUserUninstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCarrier_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCarrier_activeDeviceInstalls()
+		    				.get(0);
+		    	}
 		    	
-			    	if(this.getDatiAggregati().getCarrier_dailyUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getCarrier_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getCarrier_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCarrier_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getCarrier_dailyUserUninstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCarrier_dailyUserUninstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getCarrier_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCarrier_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
 			    	
 		    	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		    	
@@ -276,56 +289,49 @@ public class Gruppo
 		    	    	sep1+"Country_dailyUserUninstalls"+sep1+"Country_activeDeviceInstalls";
 		    
 		    	
-	
-		    	/**if(this.getApps().get(0).getDati().getCountry_data()==null || this.getApps().get(1).getDati().getCountry_data()==null)
+		    	
+		    	if(this.getDatiAggregati().getCountry_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
+		    		.getCountry_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCountry_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCountry_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCountry_dailyUserUninstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCountry_dailyUserUninstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getCountry_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getCountry_activeDeviceInstalls()
+		    				.get(0);
+		    	}
 		    	
-			    	if(this.getDatiAggregati().getCountry_dailyUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
-			    		.getCountry_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getCountry_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCountry_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getCountry_dailyUserUninstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCountry_dailyUserUninstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getCountry_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getCountry_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
 			    
 		    	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				
@@ -336,55 +342,50 @@ public class Gruppo
 		    	+"Device_dailyUserInstalls"+sep1+"Device_totUserInstalls"+
 		    	    	sep1+"Device_dailyUserUninstalls"+sep1+"Device_activeDeviceInstalls";
 		    	
-		    	/**if(this.getApps().get(0).getDati().getDevice_data()==null || this.getApps().get(1).getDati().getDevice_data()==null)
+		    
+		    	
+	    		if(this.getDatiAggregati().getDevice_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+	    			stampaGruppo=stampaGruppo+spazio+spazio;
+	    			stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDevice_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getDevice_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getDevice_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getDevice_dailyUserUninstalls()==null)
+		    	{
+		    		
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getDevice_dailyUserUninstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getDevice_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getDevice_activeDeviceInstalls()
+		    				.get(0);
+		    	}
 		    	
-		    		if(this.getDatiAggregati().getDevice_dailyUserInstalls()==null)
-			    	{
-		    			stampaGruppo=stampaGruppo+spazio+spazio;
-		    			stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDevice_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getDevice_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getDevice_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getDevice_dailyUserUninstalls()==null)
-			    	{
-			    		
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getDevice_dailyUserUninstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getDevice_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getDevice_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
 		    	
 		    	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		    	
@@ -395,54 +396,49 @@ public class Gruppo
 		    	+"Lang_dailyUserInstalls"+sep1+"Lang_totUserInstalls"+
 		    	    	sep1+"Lang_dailyUserUninstalls"+sep1+"Lang_activeDeviceInstalls";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getLang_data()==null || this.getApps().get(1).getDati().getLang_data()==null)
+		  
+		    	if(this.getDatiAggregati().getLang_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-			    	if(this.getDatiAggregati().getLang_dailyUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
-			    		.getLang_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getLang_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getLang_dailyUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getLang_totUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getLang_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getLang_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getLang_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
+		    		.getLang_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getLang_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getLang_dailyUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getLang_totUserInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getLang_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getLang_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getLang_activeDeviceInstalls()
+		    				.get(0);
+		    	}
+	    	
 			    
 		    	
 		    	
@@ -456,52 +452,47 @@ public class Gruppo
 		    	sep1+"OsVersion_dailyUserUninstalls"+sep1+"OsVersion_activeDeviceInstalls";
 		    	
 		    	
-		    	/*if(this.getApps().get(0).getDati().getOsVersion_data()==null || this.getApps().get(1).getDati().getOsVersion_data()==null)
+		    	
+		    	
+		    	if(this.getDatiAggregati().getOsVersion_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getOsVersion_dailyUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOsVersion_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOsVersion_dailyUserUninstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_dailyUserUninstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getOsVersion_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_activeDeviceInstalls()
+		    				.get(0);
+		    	}
 		    	
-			    	if(this.getDatiAggregati().getOsVersion_dailyUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getOsVersion_dailyUserInstalls()
-			    				.get(0);
-			    	}
-			    	if(this.getDatiAggregati().getOsVersion_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getOsVersion_dailyUserUninstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_dailyUserUninstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getOsVersion_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+this.getDatiAggregati().getOsVersion_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
 		    	
 		    	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		    	//tablet data
@@ -510,56 +501,50 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"Tablet_dailyUserInstalls"+sep1+"Tablet_totUserInstalls"+
 		    	    	sep1+"Tablet_dailyUserUninstalls"+sep1+"Tablet_activeDeviceInstalls";
+		    
 		    	
-		    	/**if(this.getApps().get(0).getDati().getTablet_data()==null || this.getApps().get(1).getDati().getTablet_data()==null)
+		    	
+		    	if(this.getDatiAggregati().getTablet_dailyUserInstalls()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-		    	
-		    	
-			    	if(this.getDatiAggregati().getTablet_dailyUserInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getTablet_dailyUserInstalls().get(0);
-			    	}
-			    	if(this.getDatiAggregati().getTablet_totUserInstalls()==null)
-					{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-					}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getTablet_totUserInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTablet_dailyUserUninstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getTablet_dailyUserUninstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTablet_activeDeviceInstalls()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getTablet_activeDeviceInstalls()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getTablet_dailyUserInstalls().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTablet_totUserInstalls()==null)
+				{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+				}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getTablet_totUserInstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTablet_dailyUserUninstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getTablet_dailyUserUninstalls()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTablet_activeDeviceInstalls()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getTablet_activeDeviceInstalls()
+		    				.get(0);
+		    	}
+	    	
 			    
 		    	//DATI RIGURDANTI IL RATING
 		    	
@@ -575,35 +560,30 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"daily_average_overview"+sep1+"total_average_overview";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_overview()==null || this.getApps().get(1).getDati().getData_overview()==null)
+		    
+		    	if(this.getDatiAggregati().getDaily_average_overview()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-			    	if(this.getDatiAggregati().getDaily_average_overview()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDaily_average_overview()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_overview()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3
-			    				+this.getDatiAggregati().getTotal_average_overview()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDaily_average_overview()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_overview()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3
+		    				+this.getDatiAggregati().getTotal_average_overview()
+		    				.get(0);
+		    	}
+		    	
 			   
 		    	
 		    	//carrier
@@ -612,72 +592,62 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"daily_average_carrier"+sep1+"total_average_carrier";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_carrier()==null || this.getApps().get(1).getDati().getData_carrier()==null)
+		    	
+		    	
+		    	if(this.getDatiAggregati().getDaily_average_carrier()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDaily_average_carrier()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_carrier()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_carrier()
+		    				.get(0);
+		    	}
 		    	
-			    	if(this.getDatiAggregati().getDaily_average_carrier()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDaily_average_carrier()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_carrier()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_carrier()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
 			    	
 		    	//country
 			    stampaGruppo=stampaGruppo+spazio+spazio
 		    	+sep2+"Tipo di Dato:   Country"
 		    	+spazio+spazio
 		    	+"daily_average_country"+sep1+"total_average_country";
-		    	/*if(this.getApps().get(0).getDati().getData_country()==null || this.getApps().get(1).getDati().getData_country()==null)
+		    	
+
+		    	if(this.getDatiAggregati().getDaily_average_country()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-	
-			    	if(this.getDatiAggregati().getDaily_average_country()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDaily_average_country()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_country()==null)
-			    	{;
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3
-			    				+this.getDatiAggregati().getTotal_average_country()
-			    				.get((int)(Math.random() * 100));
-			    	}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDaily_average_country()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_country()==null)
+		    	{;
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3
+		    				+this.getDatiAggregati().getTotal_average_country()
+		    				.get(0);
+		    	}
+	    	
 		    	
-		    	//}
 		    	
 		    	//device
 			    stampaGruppo=stampaGruppo+spazio+spazio
@@ -685,70 +655,60 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"daily_average_device"+sep1+"total_average_device";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_device()==null || this.getApps().get(1).getDati().getData_device()==null)
+		    
+		    	
+		    	if(this.getDatiAggregati().getDaily_average_device()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getDaily_average_device()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_device()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_device()
+		    				.get(0);
+		    	}
+	    	
 		    	
-			    	if(this.getDatiAggregati().getDaily_average_device()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getDaily_average_device()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_device()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_device()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	
-		    	//}
 		    	//language
 			    stampaGruppo=stampaGruppo+spazio+spazio
 		    	+sep2+"Tipo di Dato:   Language"
 		    	+spazio+spazio
 		    	+"daily_average_language"+sep1+"total_average_language";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_language()==null || this.getApps().get(1).getDati().getData_language()==null)
+		    
+	
+		    	if(this.getDatiAggregati().getDaily_average_language()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-	
-			    	if(this.getDatiAggregati().getDaily_average_language()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
-			    		.getDaily_average_language().get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_language()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3
-			    				+this.getDatiAggregati().getTotal_average_language()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati()
+		    		.getDaily_average_language().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_language()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3
+		    				+this.getDatiAggregati().getTotal_average_language()
+		    				.get(0);
+		    	}
+		    	
 		    	
 		    	
 		    	
@@ -759,36 +719,31 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"daily_average_Os_version"+sep1+"total_average_Os_version";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_os_version()==null || this.getApps().get(1).getDati().getData_os_version()==null)
+		    	
+		    	
+		    	if(this.getDatiAggregati().getDaily_average_os_version()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-		    	
-			    	if(this.getDatiAggregati().getDaily_average_os_version()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDaily_average_os_version()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_os_version()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3
-			    				+this.getDatiAggregati().getTotal_average_os_version()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDaily_average_os_version()
+		    				.get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_os_version()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3
+		    				+this.getDatiAggregati().getTotal_average_os_version()
+		    				.get(0);
+		    	}
+	    	
 		    	
 		    	//tablet
 			    stampaGruppo=stampaGruppo+spazio+spazio
@@ -796,35 +751,28 @@ public class Gruppo
 		    	+spazio+spazio
 		    	+"daily_average_tablet"+sep1+"total_average_tablet";
 		    
-		    	/*if(this.getApps().get(0).getDati().getData_tablet()==null || this.getApps().get(1).getDati().getData_tablet()==null)
+		    	
+		    	if(this.getDatiAggregati().getDaily_average_tablet()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getDaily_average_tablet().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getTotal_average_tablet()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3
+		    				+this.getDatiAggregati().getTotal_average_tablet().get(0);
+		    	}
 		    	
-		    	
-			    	if(this.getDatiAggregati().getDaily_average_tablet()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getDaily_average_tablet().get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getTotal_average_tablet()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3
-			    				+this.getDatiAggregati().getTotal_average_tablet().get((int)(Math.random() * 100));
-			    	}
-		    	//}
 		    	//app data
 			    stampaGruppo=stampaGruppo+spazio+spazio
 		    	+sep2+"Tipo di Dato:    App Version"
@@ -832,34 +780,29 @@ public class Gruppo
 		    	+"daily_average_app_version"
 		    	+sep1+"total_average_app_version";
 		    	
-		    	/*if(this.getApps().get(0).getDati().getData_app_version()==null || this.getApps().get(1).getDati().getData_app_version()==null)
+		    	
+		    	if(this.getDatiAggregati().getDaily_average_app_version()==null)
 		    	{
-		    		"DATI NON ESISTENTI");
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
 		    	}
 		    	else
-		    	{*/
-			    	if(this.getDatiAggregati().getDaily_average_app_version()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getDaily_average_overview()
-			    				.get((int)(Math.random() * 100));
-			    	}
-			    	
-			    	if(this.getDatiAggregati().getTotal_average_app_version()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_overview()
-			    				.get((int)(Math.random() * 100));
-			    	}
-		    	//}
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getDaily_average_overview()
+		    				.get(0);
+		    	}
+		    	
+		    	if(this.getDatiAggregati().getTotal_average_app_version()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep3+this.getDatiAggregati().getTotal_average_overview()
+		    				.get(0);
+		    	}
+		    	
 	    	}
 		    	
 	    	//win store
@@ -960,32 +903,27 @@ public class Gruppo
 		    	+sep2+"Tipo di Dato:   Rating new and revised"
 		    	+spazio+spazio
 		    	+"count_new"+"\t\t\t\t"+"count_revised";
-		    	/*if (this.getApps().get(0).getDati().getType()!=null || this.getApps().get(1).getDati().getType()!=null)
-				{*/
-			    	if(this.getDatiAggregati().getCount_new()==0)
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getCount_new();
-			    	}
-			     	if(this.getDatiAggregati().getCount_revised()==0)
-			    	{
-
-			     		stampaGruppo=stampaGruppo+sep+"\t"+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"\t"+this.getDatiAggregati().getCount_revised();
-			    	}
-				//}
-		    	/*else
+		    
+		    	if(this.getDatiAggregati().getCount_new()==0)
 		    	{
-		    		sep1+"DATI NON DISPONIBILI");
-		    	}*/
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1+this.getDatiAggregati().getCount_new();
+		    	}
+		     	if(this.getDatiAggregati().getCount_revised()==0)
+		    	{
+
+		     		stampaGruppo=stampaGruppo+sep+"\t"+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"\t"+this.getDatiAggregati().getCount_revised();
+		    	}
+			
 		    	//ratings over
 			    stampaGruppo=stampaGruppo+spazio+spazio
 		    	+sep2+"Tipo di Dato:   Rating average over time"
@@ -1009,34 +947,30 @@ public class Gruppo
 		    	+sep2+"Tipo di Dato:   Markets"
 		    	+spazio+spazio
 		    	+"Average_rating"+"\t\t\t"+"number_rating";
-		    	/*if (this.getApps().get(0).getDati().getMarket()!=null || this.getApps().get(1).getDati().getMarket()!=null)
-				{	*/
+		    
 		    	
-		    		if(this.getDatiAggregati().getAverage_rating()==null)
-			    	{
-		    			stampaGruppo=stampaGruppo+spazio+spazio;
-		    			stampaGruppo=stampaGruppo+sep1+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+spazio+spazio;
-			    		stampaGruppo=stampaGruppo+sep1
-			    				+this.getDatiAggregati().getAverage_rating().get((int)(Math.random() * 100));
-			    	}
-			    	if(this.getDatiAggregati().getNumber_rating()==null)
-			    	{
-			    		stampaGruppo=stampaGruppo+sep+"ND";
-			    	}
-			    	else
-			    	{
-			    		stampaGruppo=stampaGruppo+sep
-			    				+this.getDatiAggregati().getNumber_rating().get((int)(Math.random() * 100));
-			    	}
-				
-		    	/*else
+	    		if(this.getDatiAggregati().getAverage_rating()==null)
 		    	{
-		    		sep1+"ND");
-		    	}*/
+	    			stampaGruppo=stampaGruppo+spazio+spazio;
+	    			stampaGruppo=stampaGruppo+sep1+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+spazio+spazio;
+		    		stampaGruppo=stampaGruppo+sep1
+		    				+this.getDatiAggregati().getAverage_rating().get(0);
+		    	}
+		    	if(this.getDatiAggregati().getNumber_rating()==null)
+		    	{
+		    		stampaGruppo=stampaGruppo+sep+"ND";
+		    	}
+		    	else
+		    	{
+		    		stampaGruppo=stampaGruppo+sep
+		    				+this.getDatiAggregati().getNumber_rating().get(0);
+		    	}
+				
+		    	
 	    	}
 	    	
 	    	
@@ -1117,23 +1051,28 @@ public class Gruppo
     		stampaGruppo=stampaGruppo+spazio+spazio;
     		stampaGruppo=stampaGruppo+"NON CI SONO DATI NELLE APP, IMPOSSIBILE VISUALIZZARE IL GRUPPO";
     	}
-    	//dati app singola
-    	if(visualizzazione==true)
-    	{
-	    	for (int i=0;i<this.apps.size();i++)
-	    	{
-	    		this.apps.get(i).visualizzazioneDati();
-	    	}
-	    }
     	
     	return stampaGruppo;
     
     }
     
-    
+	/**
+     * Funzione per la visualizzazione dei dati di un Gruppo,
+     * visualizza sia i dati delle app del gruppo che i dati aggregati del
+     * gruppo stesso
+     *
+     */
     public void visualizzazioneDati()
     {
     	String visualizzazioneDati=this.preparazioneDatiStringa();
+    	//visualizzazione dati singole app del gruppo
+    	if(this.getApps()!=null)
+    	{
+	    	for (int i=0;i<this.apps.size();i++)
+		    {
+		    	this.apps.get(i).visualizzazioneDati();
+		    }
+    	}	
     	System.out.println(visualizzazioneDati);
     }
     
@@ -1153,35 +1092,35 @@ public class Gruppo
     public void aggregazioneDati(){
  
     }
+   
     /**
      * Funzione per scaricare i dati di un Gruppo
-     *
-     * @return Il file contente i dati del Gruppo
+     *Crea il file con i dati del gruppo in locale
+     * 
      */
-    
-    
-    
-    
     
     public void scaricamentoDati()
     {
-    	//questo metodo da use case dovrebbe richiamare this.visualizzazioneDati()
-    	
-    	//Siccome visualizzazione restituisce un void e lo scaricamento utilizza 
-    	//praticamente lo stesso codice, ma
-    	//al posto che richiamare il metodo visualizzazione 
-    	//ho utilizzato lo stesso codice mettendo la stampa su file al posto della
-    	//stampa su command line
-    	
     	//il metodo a differenza di come descritto nel class diagram restituisce
-    	//un void al posto del file poichè il file viene salvato direttamente in locale
+    	//un void al posto del file poichè il file viene salvato direttamente in locale.
+    	//richiama la visualizzazione e poi salva il file con solo i dati del gruppo
     	this.visualizzazioneDati();
     	System.out.println("Insersci percorso e nome del file:     ");
     	String percorso=Input.readLine();
     	this.salvataggioFile(percorso,this.preparazioneDatiStringa());
     }
     
-    
+    /**funzione asuliaria per i test dello scaricamento 
+     * che dato un percorso(comprende anche 
+     * il nome del file) 
+     *e una stringa,scrive la stringa sul file e salva il file in locale
+     *il file è di tipo testo
+     * 
+     * @param percorso
+     * @param dati
+     * @return true se il file viene scritto e creato essendo il percorso valido,
+     * false se il percorso non esiste.
+     */
     public boolean salvataggioFile(String percorso,String dati) 
     {    
     	try 
@@ -1201,32 +1140,4 @@ public class Gruppo
     	
     }
     
-    /**public boolean CreazioneFile(File f) 
-    {
-    	
-    	try
-    	{
-    		boolean creato=f.createNewFile();
-    		return creato;
-    	} 
-    	catch (IOException e)
-    	{
-    		e.printStackTrace();
-    		return false;
-    	}
-             
-    }
-    
-    public boolean ControlloFile(File f)
-    {
-    	if (f.exists())
-    	{
-    		return true;
-    	}
-    	else
-    		return false;
-    }*/
-    
-  
-
 }

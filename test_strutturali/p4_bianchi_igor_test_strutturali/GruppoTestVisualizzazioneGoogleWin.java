@@ -40,7 +40,6 @@ public class GruppoTestVisualizzazioneGoogleWin
 		for(int j = 0; j<100; j++){
 			datiInt.add((int)(Math.random() * 100));
 			datiDouble.add((double)Math.round((double)Math.random()*5));
-			//System.out.println(daily.get(j));
 		}
 		ArrayList<Integer> daily = new ArrayList<Integer>();
 		ArrayList<Double> daily2=new ArrayList<Double>();
@@ -322,7 +321,6 @@ public class GruppoTestVisualizzazioneGoogleWin
 		for(int j = 0; j<100; j++){
 			datiInt.add((int)(Math.random() * 100));
 			datiDouble.add((double)Math.round((double)Math.random()*5));
-			//System.out.println(daily.get(j));
 		}
 		ArrayList<Integer> daily = new ArrayList<Integer>();
 		ArrayList<Double> daily2=new ArrayList<Double>();

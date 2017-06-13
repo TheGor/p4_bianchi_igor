@@ -9,7 +9,11 @@ import p4_bianchi_igor.Gruppo;
 //white
 public class GruppoTestScaricamento 
 {
-
+	//testo la funzione ausiliaria di salvataggio dati,
+	//caso in input do un percorso corretto
+	//ATTENZIONE questo caso potrebbe fallire poichè il percorso
+	//specificato potrebbe non esistere sul pc di chi esegue questo test
+	//quindi l'assert darà false al posto che true
 	@Test
 	public void testSalvataggioDatiCorretto()
 	{
@@ -19,6 +23,8 @@ public class GruppoTestScaricamento
 		assertTrue(g.salvataggioFile(percorso, s));
 	}
 	
+	
+	//caso in cui do un percorso non esistente
 	@Test
 	public void testSalvataggioDatiFail()
 	{

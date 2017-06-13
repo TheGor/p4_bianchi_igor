@@ -2,7 +2,7 @@ package p4_bianchi_igor;
 import java.util.ArrayList;
 /**
  * Classe per definire l'oggetto Dati
- * @author Accetta Cristian
+ * 
  */
 public class Dati{
 	
@@ -458,13 +458,6 @@ public class Dati{
 		this.failure_count = failure_count;
 	}
 
-	@Override
-	public String toString() {
-		return 	(this.overview_dailyUserInstalls + "\n" + 
-				this.overview_dailyUserUninstalls + "\n" +
-				this.overview_totUserInstalls + "\n" +
-				this.overview_activeDeviceInstalls);
-	}
 
 	public ArrayList<String> getAttributi() {
 		return attributi;

@@ -26,7 +26,7 @@ public class App{
      * ovvero racchiude sotto forma di stringa tutti
      * i dati da stampare
      * 
-     * @return String, ritorna sempre una stringa
+     * @return una stringa 
      *
      */
     
@@ -43,6 +43,8 @@ public class App{
     	//stringa di errore(ad esempi dati non disponibili)
     	
     	//Ho cercato di ricreare una sorta di tabella
+    	//usando cicli for,i tab e gli spazi
+    	//il tutto viene messo in una stringa
     	
     	String stampa="";
     	String spazio="\n";
@@ -55,7 +57,7 @@ public class App{
 	    	String sep2="\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t";
 	    	String sep3="\t"+"\t"+"\t";
 	    	
-	    	//controllo di che stro è l'app per stampare i dati 
+	    	//controllo di che store è l'app per stampare i dati 
 	    	//relativi
 	    	//siccome ci sono stati forniti solo i report relativi a 
 	    	//google e winstore il caso di AppleStore non viene gestito
@@ -775,6 +777,15 @@ public class App{
     	this.salvataggioFile(percorso,this.preparazioneStringaDati());
     }
     
+    
+    /**
+     * funzione asuliaria che dato un percorso(comprende anche il nome del file) 
+     *e una stringa,scrive la stringa sul file e salva il file in locale
+     * @param percorso
+     * @param dati
+     * @return true se il file viene scritto e creato, false se il
+     * percorso non esiste e stampa i messaggi di errore e ritorna false
+     */
     public boolean salvataggioFile(String percorso,String dati) 
     {    
     	try 
@@ -793,6 +804,7 @@ public class App{
     	return false;
     }
    
+    //setters e getters
  
 	public String getNomeApp() {
 		return nomeApp;

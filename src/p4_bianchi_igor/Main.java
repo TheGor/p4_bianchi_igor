@@ -5,15 +5,32 @@ public class Main {
 
 	public static void main(String[] args) 
 	{
+		//funzionamento main
+		//si chiede di inserire 3 nomi di gruppi
+		//il sistema salva i gruppi
 		
-	
+		//si sceglie se scaricare i dati di un app o un gruppo(visto che lo scaricamento richiama anche
+		//la visualizzazione)
+		//se si inserisce qualcosa di diverso da "app" o "gruppo" il sistema stampa un messaggio di errore
+		//e bisogna rilanciarlo
+		//se viene scelta un app, viene visualizzata una lista di app e si sceglie di quale scaricare  i dati
+		//se si sceglie un gruppo viene visualizzata la lista di gruppi e si sceglie di quale scaricare i dati
+		//poi in entrambi i casi viene chiesto il percorso e il nome del file, se si inserisce un percorso
+		//non esistente viene visualizzato un messaggio di errore e bisogna far ripartire il main
+		//
+		
+		//definizione di tutte le variabili
+		boolean sceltaOk=false;
+		boolean sceltaOk1=false;
+		String scelta1;
+		String scelta;
 		ArrayList<Gruppo> gruppi=new ArrayList<Gruppo>();
 		ElementAppStore win=new WinStore();
 		ElementAppStore google=new GoogleStore();
 		ArrayList<App> apps = new ArrayList<App>();
 		ArrayList<App> apps2 = new ArrayList<App>();
 		ArrayList<App> apps3 = new ArrayList<App>();
-		
+		ArrayList<App> appsTotali = new ArrayList<App>();
 		
 		ArrayList<Integer> daily = new ArrayList<Integer>();
 		ArrayList<Double> daily2=new ArrayList<Double>();
@@ -28,6 +45,7 @@ public class Main {
 		App f=new App("football",win);
 		App g=new App("basket",win);
 		
+		
 		//aggiunta app alle liste app
 		apps.add(a);
 		apps.add(b);
@@ -35,9 +53,16 @@ public class Main {
 		apps2.add(e);
 		apps3.add(f);
 		apps3.add(g);
+		appsTotali.add(a);
+		appsTotali.add(b);
+		appsTotali.add(c);
+		appsTotali.add(e);
+		appsTotali.add(f);
+		appsTotali.add(g);
+		
 		
 		//creo il sistema con un arraylist di gruppi
-		Sistema sistema=new Sistema(null,null,gruppi);
+		Sistema sistema=new Sistema(null,appsTotali,gruppi);
 		sistema.creazioneGruppo();
 		sistema.creazioneGruppo();
 		sistema.creazioneGruppo();
@@ -436,25 +461,106 @@ public class Main {
 		f.setDati(d);
 		g.setDati(d);
 		
-		
-		System.out.println("scegli il gurppo di cui visualizzare i dati tra     ");
-		for (int i=0;i<sistema.getGruppi().size();i++)
+		//scelte
+		System.out.println("scegliere se visualizzare un app o un gruppo:     ");
+		scelta1=Input.readLine();
+		switch(scelta1)
 		{
-			System.out.println(sistema.getGruppi().get(i).getNomeGruppo());
 			
-		}
-		
-		
-		
-		String scelta=Input.readLine();
-		for(int i=0;i<sistema.getGruppi().size();i++)
-		{
-			if(scelta.equals(sistema.getGruppi().get(i).getNomeGruppo()))
+			//caso di scelta del gruppo
+			case "gruppo":
 			{
-				sistema.getGruppi().get(i).setDatiAggregati(dAggregati);
-				sistema.getGruppi().get(i).scaricamentoDati();
-				break;
+				System.out.println("scegli il gurppo di cui scaricare i dati tra     ");
+				for (int i=0;i<sistema.getGruppi().size();i++)
+				{
+					System.out.println(sistema.getGruppi().get(i).getNomeGruppo());
+					
+				}
+				
+				scelta=Input.readLine();
+				
+				//blocco che controlla la scelta, se è giusta va avanti
+				//se no la richiede
+				while(sceltaOk==false)
+				{
+					for (int i=0;i<sistema.getGruppi().size();i++)
+					{
+						if(scelta.equals(sistema.getGruppi().get(i).getNomeGruppo()))
+						{
+							sceltaOk=true;
+							i=sistema.getGruppi().size();
+						}
+					}
+					if(sceltaOk==false)
+					{	
+						System.out.println("scelta errata, riprovare :");
+						scelta=Input.readLine();
+					}
+					else
+					{
+						break;
+					}
+				}
+				
+				//blocco che esegue le funzioni in base alla scelta
+				for(int i=0;i<sistema.getGruppi().size();i++)
+				{
+					if(scelta.equals(sistema.getGruppi().get(i).getNomeGruppo()))
+					{
+						sistema.getGruppi().get(i).setDatiAggregati(dAggregati);
+						sistema.getGruppi().get(i).scaricamentoDati();
+						break;
+					}
+				}
 			}
+			break;
+			//caso dell'app
+			case "app":
+			{
+				System.out.println("scegli l'app di cui scaricare i dati tra     ");
+				for (int i=0;i<sistema.getApps().size();i++)
+				{
+					System.out.println(sistema.getApps().get(i).getNomeApp());
+					
+				}
+				scelta1=Input.readLine();
+				//controllo scelta,se è giusta va avanti se no la richiede
+				while(sceltaOk1==false)
+				{
+					for (int i=0;i<sistema.getApps().size();i++)
+					{
+						if(scelta1.equals(sistema.getApps().get(i).getNomeApp()))
+						{
+							sceltaOk1=true;
+							i=sistema.getApps().size();
+						}
+					}
+					if(sceltaOk1==false)
+					{	
+						System.out.println("scelta errata, riprovare :");
+						scelta1=Input.readLine();
+					}
+					else
+					{
+						break;
+					}
+				}
+				//esecuzione dell'operazione richiesta
+				for(int i=0;i<sistema.getApps().size();i++)
+				{
+					if(scelta1.equals(sistema.getApps().get(i).getNomeApp()))
+					{
+						sistema.getApps().get(i).scaricamentoDati();
+						break;
+					}
+				}
+			
+			}
+			break;
+			//caso in cui sbaglio la scelta iniziale
+			default:
+				System.out.println("scelta non valida, rieseguire il programma");
 		}
+		
 	}
 }

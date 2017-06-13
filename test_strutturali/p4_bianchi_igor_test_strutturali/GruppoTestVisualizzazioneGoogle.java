@@ -39,7 +39,6 @@ public class GruppoTestVisualizzazioneGoogle
 		for(int j = 0; j<100; j++){
 			datiInt.add((int)(Math.random() * 100));
 			datiDouble.add((double)Math.round((double)Math.random()*5));
-			//System.out.println(daily.get(j));
 		}
 		ArrayList<Integer> daily = new ArrayList<Integer>();
 		ArrayList<Double> daily2=new ArrayList<Double>();
@@ -349,97 +348,11 @@ public class GruppoTestVisualizzazioneGoogle
 		
 		app1.setDati(d);
 		app2.setDati(d);
-		
-;
-		//g1.setApps(listApp);
-		//g1.setDatiAggregati(datiAggregati);
+	
 		g0.setDatiAggregati(datiAggregati);
 		
 		g0.visualizzazioneDati();
-		/**assertNotNull(g.getDatiAggregati());
-		//assert overview_data
-		assertNotNull(g.getDatiAggregati().getOverview_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getOverview_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getOverview_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getOverview_totUserInstalls());
-		//assert carrier
-		assertNotNull(g.getDatiAggregati().getCarrier_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getCarrier_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getCarrier_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getCarrier_totUserInstalls());
-		//assert country
-		assertNotNull(g.getDatiAggregati().getCountry_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getCountry_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getCountry_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getCountry_totUserInstalls());
-		//assert device
-		assertNotNull(g.getDatiAggregati().getDevice_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getDevice_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getDevice_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getDevice_totUserInstalls());
 	
-		//assert lang
-		assertNotNull(g.getDatiAggregati().getLang_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getLang_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getLang_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getLang_totUserInstalls());
-	
-		//assert Osversion
-		assertNotNull(g.getDatiAggregati().getOsVersion_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getOsVersion_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getOsVersion_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getOsVersion_totUserInstalls());
-		
-		//assert tablet
-		assertNotNull(g.getDatiAggregati().getTablet_dailyUserInstalls());
-		assertNotNull(g.getDatiAggregati().getTablet_dailyUserUninstalls());
-		assertNotNull(g.getDatiAggregati().getTablet_activeDeviceInstalls());
-		assertNotNull(g.getDatiAggregati().getTablet_totUserInstalls());
-	
-		
-		//rating
-		//assert overview
-		assertNotNull(g.getDatiAggregati().getDaily_average_overview());
-		assertNotNull(g.getDatiAggregati().getTotal_average_overview());
-		
-		//assert country
-		assertNotNull(g.getDatiAggregati().getDaily_average_country());
-		assertNotNull(g.getDatiAggregati().getTotal_average_country());
-		
-		//assert carrier
-		assertNotNull(g.getDatiAggregati().getDaily_average_carrier());
-		assertNotNull(g.getDatiAggregati().getTotal_average_carrier());
-		
-		//assert device
-		assertNotNull(g.getDatiAggregati().getDaily_average_device());
-		assertNotNull(g.getDatiAggregati().getTotal_average_device());
-		
-		//assert language
-		assertNotNull(g.getDatiAggregati().getDaily_average_language());
-		assertNotNull(g.getDatiAggregati().getTotal_average_language());
-		
-		//asser os version
-		
-		assertNotNull(g.getDatiAggregati().getDaily_average_os_version());
-		assertNotNull(g.getDatiAggregati().getTotal_average_os_version());
-		
-		//assert tablet
-		
-		assertNotNull(g.getDatiAggregati().getDaily_average_tablet());
-		assertNotNull(g.getDatiAggregati().getTotal_average_tablet());
-		
-		//assert app_data
-		assertNotNull(g.getDatiAggregati().getDaily_average_app_version());
-		assertNotNull(g.getDatiAggregati().getTotal_average_app_version());
-		
-		
-		
-		//g1.visualizzazioneDati();
-		
-		/**assertEquals(g1.getDatiAggregati(), g.getDatiAggregati());
-		assertEquals(g1.getDatiAggregati().getOverview_dailyUserInstalls(),g.getDatiAggregati().getOverview_dailyUserInstalls());
-		*/
-			
 	}
 	
 	//test con l'oggetto dati aggregati vuoto e i dati delle singole app settati
@@ -452,7 +365,6 @@ public class GruppoTestVisualizzazioneGoogle
 		Dati d=new Dati();
 		Gruppo g2=new Gruppo("giochi2");
 		
-		//Gruppo g1=new Gruppo("social");
 		ElementAppStore store1=new GoogleStore();
 		App app1=new App("poker2",store1);
 		App app2=new App("dama2",store1);
@@ -462,7 +374,6 @@ public class GruppoTestVisualizzazioneGoogle
 		for(int j = 0; j<100; j++){
 			datiInt.add((int)(Math.random() * 100));
 			datiDouble.add((double)Math.round((double)Math.random()*5));
-			//System.out.println(daily.get(j));
 		}
 		ArrayList<Integer> daily = new ArrayList<Integer>();
 		ArrayList<Double> daily2=new ArrayList<Double>();

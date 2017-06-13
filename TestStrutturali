@@ -1,0 +1,21 @@
+TEST STRUTTURALI
+
+Coverage=69,8% sull'intero progetto che comprende le tre cartelle src,test funzionali,test strutturali
+
+Coverage src=75,2% (dove trovo tutte le classi del progetto esclusi i test che si trovano in altre due source folder)
+
+Il coverage non raggiunge il 100% per i seguenti motivi:
+-tutte le classi contenute in src non sono completamente utilizzate nello sviluppo della mia parte di progetto(visualizzazione(app e gruppo),scaricamento(app e gruppo)
+,creazione gruppo(sistema))
+
+-app(97,6% coverage) dove non vengono coperti alcuni setters e il metodo scaricamentoDati poichè contiene un inserimento da input e un branch che gestisce il caso
+in cui un app non sia ne di googleStore ne di winstore (non viene gestito poichè i dati forniti dall'azienda sono solo di win e google, quindi ho ipotizzato
+che si possano avere solo app di quei due store per le mie funzioni)-
+
+-dati(95,9%) dove non vengono utilizzati alcuni setters e getters
+
+-gruppo 98,4% dove non viene coperto il metodo scaricamento dati che contiene un inserimento da utente, le funzioni di aggregazione ed estrazione che non sono di mia
+competenza e due branch relativi al caso in cui l'app provenga dal'apple store che non vengono gestiti poichè la ditta non ha fornito i dati relativi a quelle app.
+
+-le classi google store e win store (20%) vengono utilizzate solo per la provenienza dell'app 
+

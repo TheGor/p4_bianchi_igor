@@ -67,33 +67,10 @@ public class Sistema{
     {
     	//creo un nuovo oggetto di tipo gruppo
     	//inserisco il nome
-    	//controllo se gli altri gruppi il nome è presente
-    	//aggiungo alla lista
-    	/**int i;
-    	String nome;
+    	//controllo se il nome è già in uso per altri gruppi
+    	//se si lo richiedo
+    	//se no lo creo e lo aggiungo alla lista dei gruppi
     	
-    	//richiede il nome del gruppo (uc 4 activity)
-    	System.out.println("inserisci nome gruppo :");
-    	//inserisce il nome del gruppo
-    	nome=Input.readLine();
-    	
-    	//richiede di inserire il nome se già in uso
-    	for(i=0;i<gruppi.size();i++)
-    	{
-    		
-    		while(gruppi.get(i).getNomeGruppo().equals(nome) || gruppi.get(i).getNomeGruppo().equalsIgnoreCase(nome))
-    		{
-    			System.out.println("nome già in uso!!! inserisci nuovo nome :");
-    			nome=Input.readLine();
-    			i=0;
-    		}
-    		
-    	}
-    	//crea il grupppo
-    	Gruppo nuovoGruppo=new Gruppo(nome);
-    	gruppi.add(nuovoGruppo);
-    	System.out.println("gruppo  "+nome+"   creato");
-    	**/
     	String nomeGruppo;
     	System.out.println("inserisci nome gruppo :");
     	nomeGruppo=Input.readLine();
@@ -103,8 +80,18 @@ public class Sistema{
     		nomeGruppo=Input.readLine();
     	}
     	addGruppo(nomeGruppo,this.getGruppi());
-   }
+    }
     
+    /**
+     * funzione ausiliaria per effettuare il test della creaizone gruppo 
+     * evitando l'inserimento 
+     * da input: ricerca se è presente il nome di un gruppo
+     * all'interno di un arraylist di gruppi.
+     * 
+     * @param nome
+     * @param gruppi
+     * @return true se il nome è già in uso da qualche gruppo, se no false.
+     */
     public boolean ricercaNome(String nome,ArrayList<Gruppo> gruppi)
     {
     	for(int i=0;i<gruppi.size();i++)
@@ -118,6 +105,15 @@ public class Sistema{
     	return false;
     }
     
+    /**
+     * funzione ausiliaria per fare il test della creazione gruppo
+     * per evitare l'inserimento da input
+     * Richiama la ricerca 
+     * @param nome
+     * @param gruppi
+     * @return ritorna un boolean per far
+     * vedere se ha aggiunto o meno un gruppo
+     */
     public boolean addGruppo(String nome,ArrayList<Gruppo> gruppi)
     {
     	if(ricercaNome(nome,gruppi)==false)
